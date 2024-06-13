@@ -15,9 +15,9 @@ import { useLogOnReRender } from "@/helpers/log-on-re-render";
 import { addCountry, deleteCountry, getCountries } from "@/helpers/resources";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import Link from "next/link";
-import { useState } from "react";
+import { memo, useState } from "react";
 
-const CountryRow = ({
+const CountryRow = memo(({
   name,
   onDelete,
 }: {
@@ -37,7 +37,7 @@ const CountryRow = ({
       </TableCell>
     </TableRow>
   );
-};
+});
 
 export const CountriesFixed = () => {
   const [value, setValue] = useState("");
