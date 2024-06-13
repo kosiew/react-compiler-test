@@ -1,7 +1,14 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 export const useLogOnReRender = (name: string) => {
+  const isFirstRender = useRef(true);
+
   useEffect(() => {
-    console.info(`Component ${name} re-rendered`);
+    if (isFirstRender.current) {
+      console.log(`Component ${name} initial-render`);
+      isFirstRender.current = false;
+    } else {
+      console.log(`Component ${name} re-rendered`);
+    }
   });
 };
