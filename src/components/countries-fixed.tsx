@@ -1,5 +1,7 @@
 "use client";
 /* eslint-disable react/no-unescaped-entities */
+import { Button } from "@/components/button";
+import { Input } from "@/components/input";
 import {
   Table,
   TableBody,
@@ -9,13 +11,11 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/table";
-import Link from "next/link";
-import React, { useState } from "react";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { addCountry, deleteCountry, getCountries } from "@/helpers/resources";
-import { Input } from "@/components/input";
-import { Button } from "@/components/button";
 import { useLogOnReRender } from "@/helpers/log-on-re-render";
+import { addCountry, deleteCountry, getCountries } from "@/helpers/resources";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import Link from "next/link";
+import { useState } from "react";
 
 const CountryRow = ({
   name,
@@ -24,7 +24,7 @@ const CountryRow = ({
   name: string;
   onDelete: (n: string) => void;
 }) => {
-  useLogOnReRender("CountryRow");
+  useLogOnReRender(`CountryRow ${name}}`);
   return (
     <TableRow key={`${name.toLowerCase()}`}>
       <TableCell className="font-medium">
